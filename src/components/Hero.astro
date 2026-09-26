@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import { hero } from "@/data/site";
+import coverPhoto from "../../public/images/brand/skal-taipei-cover-group-photo-2026.jpg";
+import toastPhoto from "../../public/images/facebook-misc/774432459_1593070462614827_6346110160908575351.jpg";
+---
+
+<section class="section hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-top">
+      <span>{hero.topLeft}</span>
+      <span>{hero.topRight}</span>
+    </div>
+    <h1 id="hero-title">{hero.title.lead} <em>{hero.title.em}</em></h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="lead">{hero.lead}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+          <a class="btn btn-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+        </div>
+        {hero.nextLine && <p class="hero-line">{hero.nextLine}</p>}
+      </div>
+      <figure class="hero-fig">
+        <Image
+          class="desk-only"
+          src={coverPhoto}
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 920px) 100vw, 56vw"
+          alt={hero.photo.alt}
+          loading="eager"
+          fetchpriority="high"
+        />
+        <Image
+          class="mobile-only"
+          src={toastPhoto}
+          widths={[480, 800]}
+          sizes="100vw"
+          alt={hero.photo.mobileAlt}
+          loading="lazy"
+        />
+        <figcaption><span>{hero.photo.caption}</span><span>{hero.photo.date}</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-top: clamp(28px, 4vw, 56px); }
+  .hero-top { display: flex; justify-content: space-between; gap: 24px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-bottom: 14px; border-bottom: 1px solid var(--fg); flex-wrap: wrap; }
+  h1 { margin-top: clamp(20px, 3vw, 40px); max-width: 12ch; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--accent-ink); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 64px); margin-top: clamp(28px, 4vw, 56px); align-items: end; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .hero-line { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .hero-fig { margin: 0; position: relative; }
+  .hero-fig img { width: 100%; height: auto; }
+  .hero-fig figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 10px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .hero-fig .mobile-only { display: none; }
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-fig { order: -1; }
+    .hero-cta .btn { flex: 1 1 100%; }
+  }
+  @media (max-width: 640px) and (orientation: portrait) {
+    .hero-fig .desk-only { display: none; }
+    .hero-fig .mobile-only { display: block; }
+    .hero-fig img { max-height: 70vh; width: 100%; object-fit: cover; }
+  }
+</style>

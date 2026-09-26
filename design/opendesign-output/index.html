@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skål International Taipei — three visual directions</title>
+  <style>
+    :root {
+      --bg: oklch(0.957 0.008 70); --surface: oklch(0.995 0.002 90); --fg: oklch(0.30 0.075 258); --muted: oklch(0.47 0.035 258); --border: oklch(0.905 0.006 70); --accent: oklch(0.75 0.075 70); --accent-ink: oklch(0.50 0.09 70);
+      --font-display: 'Playfair Display', Georgia, serif; --font-body: 'Source Sans 3', -apple-system, 'Segoe UI', sans-serif; --font-mono: ui-monospace, Menlo, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: clamp(40px, 7vw, 96px) clamp(20px, 4vw, 40px); }
+    .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 16px; }
+    h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 60ch; margin: 0 0 40px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -28px oklch(0.30 0.075 258 / .5); border-color: var(--accent); }
+    .swatch { height: 120px; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .swatch span { display: block; }
+    .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .body .k { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: var(--muted); }
+    .body h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; margin: 0; }
+    .body p { margin: 0; color: var(--muted); font-size: 15px; }
+    .body .go { margin-top: auto; padding-top: 14px; font-weight: 600; font-size: 14px; letter-spacing: .04em; }
+    .go::after { content: ' →'; }
+    .note { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted); max-width: 70ch; }
+    .note code { font-family: var(--font-mono); font-size: 12.5px; background: var(--surface); border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main class="wrap" data-od-id="launcher">
+    <p class="eyebrow">Skål International Taipei · one-page marketing site</p>
+    <h1 data-od-id="launcher-title">Three visual directions to choose from</h1>
+    <p class="lead">Same content, same brand palette, same seven sections. Each page is a standalone HTML file with images referenced relatively from <code>public/images/</code>.</p>
+    <div class="grid">
+      <a class="card" href="skal-taipei-a-classic-prestige.html" data-od-id="card-direction-a">
+        <div class="swatch" aria-hidden="true"><span style="background: oklch(0.24 0.07 258)"></span><span style="background: oklch(0.30 0.075 258)"></span><span style="background: oklch(0.75 0.075 70)"></span></div>
+        <div class="body"><span class="k">DIRECTION A</span><h2>Classic Prestige</h2><p>Full-bleed navy hero over the Radium Kagaya group photo, Playfair Display headlines, gold hairlines, navy programme band.</p><span class="go">Open direction A</span></div>
+      </a>
+      <a class="card" href="skal-taipei-b-bright-hospitality.html" data-od-id="card-direction-b">
+        <div class="swatch" aria-hidden="true"><span style="background: oklch(0.957 0.008 70)"></span><span style="background: oklch(0.995 0.002 90); border-inline: 1px solid oklch(0.905 0.006 70)"></span><span style="background: oklch(0.30 0.075 258)"></span></div>
+        <div class="body"><span class="k">DIRECTION B</span><h2>Bright Hospitality</h2><p>Cream and white, big rounded photography, Cormorant headlines, pill buttons; navy reserved for nav and footer. Friendlier.</p><span class="go">Open direction B</span></div>
+      </a>
+      <a class="card" href="skal-taipei-c-editorial.html" data-od-id="card-direction-c">
+        <div class="swatch" aria-hidden="true"><span style="background: oklch(0.957 0.008 70)"></span><span style="background: oklch(0.30 0.075 258)"></span><span style="background: oklch(0.957 0.008 70)"></span></div>
+        <div class="body"><span class="k">DIRECTION C</span><h2>Editorial</h2><p>Magazine masthead rules, oversized Playfair type, mono captions, asymmetric 12-column Current Events grid with a lead story.</p><span class="go">Open direction C</span></div>
+      </a>
+    </div>
+    <p class="note">Logo lockup is an HTML/SVG placeholder of the official shape until the club supplies the file. The testimonial in "Why join" is a labelled placeholder. Current Events cards map 1:1 to <code>content/facebook-feed.json</code> (see the comment above each grid). Tokens and contrast notes are in <code>brand-spec.md</code>.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+---
+import { programmes } from "@/data/site";
+---
+
+<section class="section dark" id="programmes" aria-labelledby="programmes-title">
+  <div class="container">
+    <div class="mast">
+      <span class="no">{programmes.no}</span>
+      <h2 id="programmes-title">{programmes.title}</h2>
+      <span class="aside">{programmes.aside}</span>
+    </div>
+    <div class="index">
+      {
+        programmes.items.map((item, i) => (
+          <article class:list={["index-row", { green: "green" in item && item.green }]}>
+            <span class="no">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span class="when">{item.when}</span>
+          </article>
+        ))
+      }
+    </div>
+    <p class="motto">{programmes.motto}<small>{programmes.mottoNote}</small></p>
+  </div>
+</section>
+
+<style>
+  .index { border-top: 1px solid oklch(0.97 0.006 70 / 0.3); }
+  .index-row { display: grid; grid-template-columns: 64px minmax(0, 1.1fr) minmax(0, 1.6fr) 200px; gap: 24px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid oklch(0.97 0.006 70 / 0.2); transition: background .15s; }
+  .index-row:hover { background: oklch(0.97 0.006 70 / 0.05); }
+  .index-row .no { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--accent); }
+  .index-row h3 { font-size: clamp(22px, 2.4vw, 30px); font-weight: 400; }
+  .index-row p { color: var(--on-navy-muted); font-size: 15px; line-height: 1.6; }
+  .index-row .when { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-navy-muted); text-align: right; }
+  .index-row.green .no, .index-row.green .when { color: oklch(0.78 0.10 160); }
+  @media (max-width: 920px) {
+    .index-row { grid-template-columns: 48px 1fr; }
+    .index-row p, .index-row .when { grid-column: 2; }
+    .index-row .when { text-align: left; }
+  }
+  .motto { margin-top: clamp(40px, 5vw, 72px); font-family: var(--font-display); font-style: italic; font-size: clamp(28px, 4vw, 56px); line-height: 1.1; letter-spacing: -0.02em; max-width: 22ch; }
+  .motto small { display: block; margin-top: 16px; font-family: var(--font-mono); font-style: normal; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-navy-muted); }
+</style>

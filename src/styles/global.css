@@ -1,0 +1,98 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Skål International Taipei — Direction C · Editorial
+   Ported from design/opendesign-output/skal-taipei-c-editorial.html.
+   Tokens live in :root; components only reference the variables.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: oklch(0.957 0.008 70);
+  --surface: oklch(0.995 0.002 90);
+  --fg: oklch(0.30 0.075 258);
+  --muted: oklch(0.47 0.035 258);
+  --border: oklch(0.905 0.006 70);
+  --accent: oklch(0.75 0.075 70);
+
+  --accent-ink: oklch(0.50 0.09 70);
+  --accent-soft: color-mix(in oklch, var(--accent) 16%, transparent);
+  --fg-soft: color-mix(in oklch, var(--fg) 6%, transparent);
+  --navy-deep: oklch(0.24 0.07 258);
+  --on-navy: oklch(0.97 0.006 70);
+  --on-navy-muted: oklch(0.82 0.02 70);
+  --green: oklch(0.45 0.075 160);
+  --rule: var(--fg);
+
+  /* Official Skål blues (press kit 2025) — used only by the real logo files. */
+  --skal-blue: #314691;
+  --skal-blue-light: #65a8de;
+
+  --font-display: "Playfair Display", "Noto Serif TC", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-h1: clamp(52px, 10.5vw, 152px);
+  --fs-h2: clamp(36px, 5vw, 72px);
+  --fs-h3: 22px;
+  --fs-lead: clamp(17px, 1.4vw, 20px);
+  --fs-body: 16px;
+  --fs-meta: 12px;
+
+  --container: 1280px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --radius: 2px;
+  --nav-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fs-body); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+p { text-wrap: pretty; margin: 0; }
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(56px, 8vw, 112px); }
+.section.tight { padding-top: 0; }
+.h1, h1 { font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 400; line-height: 0.96; letter-spacing: -0.03em; }
+.h2, h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 400; line-height: 1.02; letter-spacing: -0.02em; }
+.h3, h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; line-height: 1.25; }
+.lead { font-size: var(--fs-lead); line-height: 1.55; color: var(--muted); max-width: 56ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.meta { font-family: var(--font-mono); font-size: var(--fs-meta); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.rule-strong { border: 0; border-top: 2px solid var(--rule); margin: 0; }
+.rule { border: 0; border-top: 1px solid var(--border); margin: 0; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* section masthead: number + title on a thick rule */
+.mast { display: grid; grid-template-columns: 120px 1fr auto; gap: 24px; align-items: end; padding-top: 18px; border-top: 2px solid var(--rule); margin-bottom: clamp(32px, 4vw, 56px); }
+.mast .no { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--muted); padding-bottom: 8px; }
+.mast h2 { grid-column: 2; }
+.mast .aside { grid-column: 3; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; text-align: right; }
+@media (max-width: 720px) {
+  .mast { grid-template-columns: 1fr; gap: 8px; }
+  .mast h2, .mast .aside { grid-column: 1; text-align: left; }
+}
+
+/* buttons — squared */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 14px 24px; border-radius: var(--radius); border: 1.5px solid transparent; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: transform .12s ease, background .18s ease, border-color .18s ease, color .18s ease; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--accent); color: var(--navy-deep); border-color: var(--accent); }
+.btn-primary:hover { background: oklch(0.81 0.075 70); border-color: oklch(0.81 0.075 70); }
+.btn-secondary { background: transparent; color: var(--fg); border-color: var(--fg); }
+.btn-secondary:hover { background: var(--fg); color: var(--on-navy); }
+.ul { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.ul:hover { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+
+/* dark band (What we do) */
+.dark { background: var(--fg); color: var(--on-navy); }
+.dark .mast { border-top-color: var(--on-navy); }
+.dark .mast .no, .dark .mast .aside, .dark .eyebrow { color: var(--on-navy-muted); }
+.dark .lead { color: var(--on-navy-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  html { scroll-behavior: auto; }
+}

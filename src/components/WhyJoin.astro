@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import { whyJoin } from "@/data/site";
+import pennantPhoto from "../../public/images/facebook-misc/773645951_1593070432614830_6539563344041496633.jpg";
+
+const showQuote = whyJoin.testimonial.quote.trim().length > 0;
+---
+
+<section class="section" id="why-join" aria-labelledby="why-title">
+  <div class="container">
+    <div class="mast">
+      <span class="no">{whyJoin.no}</span>
+      <h2 id="why-title">{whyJoin.title}</h2>
+      <span class="aside">{whyJoin.aside}</span>
+    </div>
+    <div class="benefits">
+      {
+        whyJoin.benefits.map((b) => (
+          <article class="benefit">
+            <span class="no">{b.no}</span>
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+            <ul>
+              {b.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+    {
+      showQuote && (
+        <div class="pull">
+          <div>
+            <blockquote>{whyJoin.testimonial.quote}</blockquote>
+            <p class="by">— {whyJoin.testimonial.by}</p>
+          </div>
+          <Image
+            src={pennantPhoto}
+            widths={[480, 800, 1108]}
+            sizes="(max-width: 920px) 100vw, 40vw"
+            alt={whyJoin.testimonial.photoAlt}
+            loading="lazy"
+          />
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 48px); }
+  .benefit { border-top: 1px solid var(--fg); padding-top: 18px; }
+  .benefit .no { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--accent-ink); }
+  .benefit h3 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 400; margin-top: 14px; }
+  .benefit p { margin-top: 12px; color: var(--muted); line-height: 1.65; }
+  .benefit ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .benefit li { position: relative; padding-left: 18px; font-size: 15px; }
+  .benefit li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--accent-ink); }
+  .pull { margin-top: clamp(56px, 7vw, 96px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4vw, 64px); align-items: center; border-top: 2px solid var(--fg); padding-top: clamp(28px, 4vw, 48px); }
+  .pull blockquote { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.02em; }
+  .pull .by { margin-top: 20px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .pull img { max-height: 520px; width: auto; max-width: 100%; height: auto; justify-self: end; }
+  @media (max-width: 920px) {
+    .benefits, .pull { grid-template-columns: 1fr; }
+    .pull img { justify-self: start; }
+  }
+</style>

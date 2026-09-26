@@ -1,0 +1,1 @@
+{"name":"skal-brand-tools","private":true,"type":"module","dependencies":{"@resvg/resvg-js":"^2.6.2","mupdf":"^1.28.1","opentype.js":"^2.0.0"}}

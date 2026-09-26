@@ -1,0 +1,69 @@
+---
+import { nav, site } from "@/data/site";
+---
+
+<header class="topnav" id="topnav">
+  <div class="container topnav-inner">
+    <a href="#top" class="lockup" aria-label={`${site.name} — home`}>
+      <img
+        src="/images/brand/skal-international-taipei-logo.svg"
+        width="1224"
+        height="352"
+        alt={site.name}
+        decoding="async"
+        fetchpriority="high"
+      />
+    </a>
+    <nav aria-label="Page sections" id="site-nav">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#membership">Membership</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .topnav { position: sticky; top: 0; z-index: 40; background: color-mix(in oklch, var(--bg) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--fg); }
+  .topnav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: var(--nav-h); }
+  .lockup { display: inline-flex; align-items: center; flex: none; }
+  .lockup img { height: 38px; width: auto; }
+  nav { display: flex; gap: clamp(14px, 2vw, 28px); align-items: center; }
+  nav a { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); padding: 6px 0; border-bottom: 1.5px solid transparent; }
+  nav a:hover { border-bottom-color: var(--fg); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .nav-cta { display: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--fg); padding: 0 14px; min-height: 40px; align-items: center; }
+  .nav-cta:hover { background: var(--fg); color: var(--on-navy); }
+  .nav-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--fg); background: transparent; color: var(--fg); place-items: center; }
+  .nav-toggle svg { width: 20px; height: 20px; }
+  @media (min-width: 1100px) { .nav-cta { display: inline-flex; } }
+  @media (max-width: 920px) {
+    nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--fg); padding: 8px var(--gutter) 16px; }
+    .topnav.nav-open nav { display: flex; }
+    nav a { padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .nav-toggle { display: grid; }
+    .lockup img { height: 32px; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById("topnav");
+  const button = header?.querySelector<HTMLButtonElement>(".nav-toggle");
+  if (header && button) {
+    const setOpen = (open: boolean) => {
+      header.classList.toggle("nav-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    button.addEventListener("click", () => setOpen(!header.classList.contains("nav-open")));
+    header.querySelectorAll("nav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+</script>

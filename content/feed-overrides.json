@@ -1,0 +1,28 @@
+{
+  "_readme": "Optional editorial overrides for Current Events cards, keyed by Facebook post id (see content/facebook-feed.json). Any field may be omitted: title, summary, tag, hide (true removes the post from the site but not from the RSS). The scraper never touches this file.",
+  "1632707441984462": {
+    "title": "October General Meeting — Wednesday 14 October, noon, S-Aura Hotel",
+    "summary": "Guest speaker Shirley Lan, porcelain artist and founder of Timeless Blue Artwork Co., on \u201cfuture antiques\u201d — from clay to eternity. Free for members; guest fee applies; business casual. Register through the club's form.",
+    "tag": "Next lunch"
+  },
+  "1625248022730404": {
+    "title": "Save the date: Skål Taipei's first Halloween Party, Thu 29 October",
+    "summary": "6–10 PM at WINE-derful Restaurant, hosted by Skålleague Henry. Free-flow wine, buffet and live music. NTD 2,500 +10%; families welcome."
+  },
+  "1612896330632240": {
+    "title": "In memory of Past President Hiro Liao",
+    "summary": "Skål Taipei mourns a Past President and former Vice President of Skål East Asia — a champion of young talent and sustainable tourism, and a mentor to many."
+  },
+  "1593086812613192": {
+    "title": "Honouring Steven H. Sasaya, Past President 2017–18",
+    "summary": "After 18 years as GM of Hotel Royal-Nikko Taipei, the hotelier who pioneered the Taiwan–Japan twinning agreement retires to Japan."
+  },
+  "1545203484068192": {
+    "title": "Happy Dragon Boat Festival",
+    "summary": "Season's greetings to Skålleagues in Taiwan and around the world."
+  },
+  "1543230994265441": {
+    "title": "Heritage and sustainability at the June luncheon",
+    "summary": "At Radium Kagaya: 210 trees planted under the reforestation programme, the Sustainable Tourism Awards Taiwan selection, and Faye Angevine's keynote."
+  }
+}

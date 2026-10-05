@@ -56,7 +56,7 @@ export const about = {
   aside: "Skål · Taipei · Club 347",
   paragraphs: [
     "Skål International is the only professional association that brings together every sector of travel and tourism — hotels, airlines, tour operators, travel agencies, tourism boards, restaurants and events — in one room. Founded in 1934, it counts more than 12,000 members in over 100 countries.",
-    "Skål International Taipei, Club No. 347, has been the Taiwan capital's chapter since 1970. Our members run the city's leading hotels and travel companies, sit on tourism boards, and represent embassies; the ambassadors of Saint Lucia, Belize, and Saint Vincent and the Grenadines are among us.",
+    "Skål International Taipei, Club No. 347, has been the first club in Taiwan since 1970. Our members run the city's leading hotels and travel companies, sit on tourism boards, and represent embassies; the ambassadors of Saint Lucia, Belize, and Saint Vincent and the Grenadines are among us.",
     "The motto is \u201cDoing Business Among Friends\u201d — and it is taken literally. A Skålleague is a friend first: someone you toast with at a Wednesday lunch, visit in Tokyo or Perth, and call when a deal needs a trusted name on the other side.",
   ],
   stats: [
